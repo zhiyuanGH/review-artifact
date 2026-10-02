@@ -1,0 +1,1 @@
+package ai.onnxruntime.genai; public final class Generator implements AutoCloseable { public Generator(Model model, GeneratorParams params) {} public void appendTokenSequences(Sequences input) {} public boolean isDone() { return false; } public void generateNextToken() {} public int getLastTokenInSequence(long index) { return 0; } public void close() {} }

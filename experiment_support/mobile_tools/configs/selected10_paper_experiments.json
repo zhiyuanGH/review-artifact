@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "models": {
+    "qwen3_0_6b_q4_k_m": {
+      "label": "Qwen3-0.6B-Q4_K_M",
+      "model_path": "/data/local/tmp/gguf/Qwen3-0.6B-Q4_K_M.gguf",
+      "source_config": "llama_cpp_gguf_stable.json"
+    },
+    "gemma_3_1b_it_q4_k_s": {
+      "label": "gemma-3-1b-it-Q4_K_S",
+      "model_path": "/data/local/tmp/gguf/gemma-3-1b-it-Q4_K_S.gguf",
+      "source_config": "llama_cpp_gguf_stable.json"
+    },
+    "llama_3_2_1b_instruct_q4_0": {
+      "label": "Llama-3.2-1B-Instruct-Q4_0",
+      "model_path": "/data/local/tmp/gguf/Llama-3.2-1B-Instruct-Q4_0.gguf",
+      "source_config": "llama_cpp_gguf_stable.json"
+    },
+    "qwen1_5_1_8b_chat_q4_0": {
+      "label": "qwen1_5-1_8b-chat-q4_0",
+      "model_path": "/data/local/tmp/gguf/qwen1_5-1_8b-chat-q4_0.gguf",
+      "source_config": "llama_cpp_gguf_stable.json"
+    },
+    "qwen3_0_6b_bf16": {
+      "label": "Qwen3-0.6B-BF16",
+      "model_path": "/data/local/tmp/gguf/Qwen3-0.6B-BF16.gguf",
+      "source_config": "fig14_wave_opt_more_models_valid.json"
+    },
+    "qwen3_0_6b_q6_k": {
+      "label": "Qwen3-0.6B-Q6_K",
+      "model_path": "/data/local/tmp/gguf/Qwen3-0.6B-Q6_K.gguf",
+      "source_config": "fig14_wave_opt_more_models_valid.json"
+    },
+    "qwen3_0_6b_q8_0": {
+      "label": "Qwen3-0.6B-Q8_0",
+      "model_path": "/data/local/tmp/gguf/Qwen3-0.6B-Q8_0.gguf",
+      "source_config": "fig14_wave_opt_more_models_valid.json"
+    },
+    "hunyuan_0_5b_instruct_q6_k": {
+      "label": "Hunyuan-0.5B-Instruct-Q6_K",
+      "model_path": "/data/local/tmp/gguf/tencent_Hunyuan-0.5B-Instruct-Q6_K.gguf",
+      "source_config": "fig14_wave_opt_more_models_valid.json"
+    },
+    "llama_3_2_3b_instruct_q4_0": {
+      "label": "Llama-3.2-3B-Instruct-Q4_0",
+      "model_path": "/data/local/tmp/gguf/Llama-3.2-3B-Instruct-Q4_0.gguf",
+      "source_config": "llama32_3b_oracle_wave.json"
+    },
+    "phi_3_5_mini_instruct_q4_k_m": {
+      "label": "Phi-3.5-mini-instruct.Q4_K_M",
+      "model_path": "/data/local/tmp/gguf/Phi-3.5-mini-instruct.Q4_K_M.gguf",
+      "source_config": "llama_cpp_phi35_only.json"
+    }
+  },
+  "fig16_models": [
+    "qwen3_0_6b_q4_k_m",
+    "llama_3_2_1b_instruct_q4_0",
+    "qwen1_5_1_8b_chat_q4_0",
+    "qwen3_0_6b_bf16",
+    "qwen3_0_6b_q6_k",
+    "qwen3_0_6b_q8_0",
+    "llama_3_2_3b_instruct_q4_0",
+    "hunyuan_0_5b_instruct_q6_k"
+  ],
+  "fig14_models": [
+    "qwen3_0_6b_q4_k_m",
+    "llama_3_2_1b_instruct_q4_0",
+    "qwen1_5_1_8b_chat_q4_0",
+    "gemma_3_1b_it_q4_k_s",
+    "phi_3_5_mini_instruct_q4_k_m"
+  ],
+  "execution_models": [
+    "qwen3_0_6b_q4_k_m",
+    "llama_3_2_1b_instruct_q4_0",
+    "qwen1_5_1_8b_chat_q4_0"
+  ],
+  "source_root": "configs/characterization",
+  "phones": {
+    "DEVICE_A_SERIAL": "8 Elite",
+    "DEVICE_B_SERIAL": "8 Gen 3"
+  },
+  "workflow_indices": [
+    120,
+    7,
+    33,
+    100,
+    186,
+    213,
+    239,
+    48,
+    152,
+    179
+  ]
+}

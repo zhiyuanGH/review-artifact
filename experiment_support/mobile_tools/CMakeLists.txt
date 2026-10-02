@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.22)
+project(wfgen_phone_tools LANGUAGES CXX)
+add_executable(wfgen-tools src/main.cpp)
+target_compile_features(wfgen-tools PRIVATE cxx_std_17)
+target_include_directories(wfgen-tools PRIVATE vendor)
+target_compile_options(wfgen-tools PRIVATE -Wall -Wextra -Wpedantic)

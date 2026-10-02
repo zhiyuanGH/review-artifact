@@ -1,0 +1,40 @@
+{
+  "max_parallel_nodes": 1,
+  "llm": {
+    "runtime": "ort_genai_cli",
+    "ort_genai": {
+      "adb": "adb",
+      "device_serial": "DEVICE_A_SERIAL",
+      "max_tokens": 64,
+      "timeout": 240,
+      "runner_dir": "/data/local/tmp/oga_generate",
+      "model_path": "/data/local/tmp/ort_phi35_cpu_int4",
+      "jar": "oga-generate-corrected-20261001.jar",
+      "prompt_char_limit": 0
+    }
+  },
+  "qnn_tools": {
+    "find_user_by_contact": {
+      "mode": "json_cli",
+      "command": [
+        "adb",
+        "-s",
+        "DEVICE_A_SERIAL",
+        "shell",
+        "/data/local/tmp/wfgen_native_tools/example/wfgen-tools find_user_by_contact --state /data/local/tmp/wfgen_native_tools/example/active.state.json"
+      ],
+      "timeout": 60
+    },
+    "modify_user_address": {
+      "mode": "json_cli",
+      "command": [
+        "adb",
+        "-s",
+        "DEVICE_A_SERIAL",
+        "shell",
+        "/data/local/tmp/wfgen_native_tools/example/wfgen-tools modify_user_address --state /data/local/tmp/wfgen_native_tools/example/active.state.json"
+      ],
+      "timeout": 60
+    }
+  }
+}

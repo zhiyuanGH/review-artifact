@@ -1,0 +1,63 @@
+{
+  "source_dataset": "fuvty/tau-bench-synthetic",
+  "config": "tasks",
+  "split": "train",
+  "selection": {
+    "method": "fixed_contiguous_window",
+    "offset": 0,
+    "count": 1
+  },
+  "samples": [
+    {
+      "selection_index": 0,
+      "task_id": "train_0",
+      "domain": "retail",
+      "description": {
+        "purpose": "Generated from template: cancel_pending",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are apologetic and slightly embarrassed about the mistake. You speak in a straightforward manner and just want to get the cancellation handled without making a big deal of it.",
+          "domain": "retail",
+          "reason_for_call": "I need to cancel my order #W4466964. I ordered it by mistake - I wasn't supposed to place that order at all. It has an Espresso Machine and a Gaming Mouse on it.",
+          "known_info": "You are Juan Lopez with email juan.lopez7539@example.com. Your order #W4466964 contains a 19 bar, 2L, capsule Espresso Machine and a black, optical, wired Gaming Mouse.",
+          "unknown_info": "You are not sure whether the order has already been processed or shipped."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "find_user_by_contact",
+          "arguments": {
+            "email": "juan.lopez7539@example.com"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "#W4466964"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "cancel_order",
+          "arguments": {
+            "order_id": "#W4466964",
+            "reason": "ordered by mistake"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": true
+    }
+  ]
+}

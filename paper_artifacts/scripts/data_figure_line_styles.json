@@ -1,0 +1,98 @@
+{
+  "styles": {
+    "Qwen3_Q4": {
+      "color": "#4F6F8F",
+      "linestyle": "-",
+      "marker": "o"
+    },
+    "Qwen3_Q8": {
+      "color": "#8CB9DD",
+      "linestyle": "-",
+      "marker": "s"
+    },
+    "Qwen3_Q6": {
+      "color": "#8FB996",
+      "linestyle": "-",
+      "marker": "^"
+    },
+    "Qwen3_BF16": {
+      "color": "#006BA4",
+      "linestyle": "--",
+      "marker": "D"
+    },
+    "Llama1B_Q4": {
+      "color": "#B8A77A",
+      "linestyle": "-.",
+      "marker": "v"
+    },
+    "Qwen15_Q4": {
+      "color": "#6F8FAF",
+      "linestyle": "-",
+      "marker": "P"
+    },
+    "Llama3B_Q4": {
+      "color": "#4A76A8",
+      "linestyle": ":",
+      "marker": "X"
+    },
+    "Hunyuan_Q6": {
+      "color": "#7A5EA8",
+      "linestyle": "-",
+      "marker": "*"
+    }
+  },
+  "figures": {
+    "Fig. 16": {
+      "caption": "Model characterization across workflows",
+      "file": "figures/studies/characterization/characterization_model_by_workflow.pdf",
+      "entries": [
+        {
+          "legend": "Qwen3-Q4",
+          "methods": ["qwen3_0_6b_q4_k_m"],
+          "style": "Qwen3_Q4"
+        },
+        {
+          "legend": "Qwen3-Q8",
+          "methods": ["qwen3_0_6b_q8_0"],
+          "style": "Qwen3_Q8"
+        },
+        {
+          "legend": "Qwen3-Q6",
+          "methods": ["qwen3_0_6b_q6_k"],
+          "style": "Qwen3_Q6"
+        },
+        {
+          "legend": "Qwen3-BF16",
+          "methods": ["qwen3_0_6b_bf16"],
+          "style": "Qwen3_BF16"
+        },
+        {
+          "legend": "Llama1B-Q4",
+          "methods": ["llama_3_2_1b_instruct_q4_0"],
+          "style": "Llama1B_Q4"
+        },
+        {
+          "legend": "Qwen1.5-Q4",
+          "methods": ["qwen1_5_1_8b_chat_q4_0"],
+          "style": "Qwen15_Q4"
+        },
+        {
+          "legend": "Llama3B-Q4",
+          "methods": ["llama_3_2_3b_instruct_q4_0"],
+          "style": "Llama3B_Q4"
+        },
+        {
+          "legend": "Hunyuan-Q6",
+          "methods": ["hunyuan_0_5b_instruct_q6_k"],
+          "style": "Hunyuan_Q6"
+        }
+      ]
+    }
+  },
+  "normal_linewidth": 1.8,
+  "ours_linewidth": 2.3,
+  "emphasize_ours": false,
+  "markersize": 3.8,
+  "markeredgecolor": "#333333",
+  "markeredgewidth": 0.6
+}

@@ -1,0 +1,1 @@
+package ai.onnxruntime.genai; public final class GeneratorParams implements AutoCloseable { public GeneratorParams(Model model) {} public void setSearchOption(String name, double value) {} public void setSearchOption(String name, boolean value) {} public void close() {} }

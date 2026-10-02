@@ -1,0 +1,27 @@
+# Credentials and local environment
+.env
+.env.*
+!.env.example
+*.local.json
+.venv/
+venv/
+
+# Generated outputs
+__pycache__/
+*.py[cod]
+.pytest_cache/
+results/
+outputs/
+build/
+dist/
+*.egg-info/
+local_data/
+*.log
+*.perfetto-trace
+*.gguf
+*.onnx
+*.bin
+*.so
+*.jar
+.DS_Store
+Thumbs.db

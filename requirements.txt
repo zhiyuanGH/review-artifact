@@ -1,0 +1,6 @@
+# Third-party Python dependencies used by cloud planning and real HTTP inference.
+# Deterministic planning, deployment and dry-run execution use the standard library.
+# Install a current OpenAI SDK with Responses API support for cloud planning.
+openai
+requests
+datasets

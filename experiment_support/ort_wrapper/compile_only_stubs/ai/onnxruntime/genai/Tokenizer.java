@@ -1,0 +1,1 @@
+package ai.onnxruntime.genai; public final class Tokenizer implements AutoCloseable { public Tokenizer(Model model) {} public TokenizerStream createStream() { return null; } public Sequences encode(String text) { return null; } public void close() {} }

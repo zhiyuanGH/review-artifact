@@ -1,0 +1,414 @@
+{
+  "workflow": {
+    "workflow_id": "tau_bench_cloud_retail_120_train_120",
+    "name": "Update user default shipping address",
+    "description": "I just moved to a new place and I need to update my default shipping address so future orders don't get sent to my old apartment.",
+    "source_task_ids": [
+      "train_120"
+    ],
+    "user_goal": "I just moved to a new place and I need to update my default shipping address so future orders don't get sent to my old apartment.",
+    "inputs": [
+      {
+        "name": "email",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter email.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "user_id",
+        "artifact_type": "id",
+        "codec": "text/plain",
+        "description": "Input parameter user_id.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "address1",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter address1.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "address2",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter address2.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "city",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter city.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "state",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter state.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "country",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter country.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "zip",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter zip.",
+        "max_bytes": 65536
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "find_user_by_contact",
+        "kind": "app",
+        "label": "Find User By Contact",
+        "purpose": "find user by contact",
+        "entrypoint": "find_user_by_contact",
+        "parameters": [
+          {
+            "name": "email",
+            "value": "yara.patel5445@example.com",
+            "description": "find_user_by_contact argument email"
+          }
+        ],
+        "inputs": [
+          {
+            "name": "email",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter email.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "user",
+            "artifact_type": "user",
+            "codec": "json",
+            "description": "Output artifact from find_user_by_contact.",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "cloud",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "modify_user_address",
+        "kind": "app",
+        "label": "Modify User Address",
+        "purpose": "modify user address",
+        "entrypoint": "modify_user_address",
+        "parameters": [
+          {
+            "name": "user_id",
+            "value": "yara_patel_8545",
+            "description": "modify_user_address argument user_id"
+          },
+          {
+            "name": "address1",
+            "value": "258 Willow Lane",
+            "description": "modify_user_address argument address1"
+          },
+          {
+            "name": "address2",
+            "value": "Suite 550",
+            "description": "modify_user_address argument address2"
+          },
+          {
+            "name": "city",
+            "value": "Fort Worth",
+            "description": "modify_user_address argument city"
+          },
+          {
+            "name": "state",
+            "value": "TX",
+            "description": "modify_user_address argument state"
+          },
+          {
+            "name": "country",
+            "value": "USA",
+            "description": "modify_user_address argument country"
+          },
+          {
+            "name": "zip",
+            "value": "76130",
+            "description": "modify_user_address argument zip"
+          }
+        ],
+        "inputs": [
+          {
+            "name": "user_id",
+            "artifact_type": "id",
+            "codec": "text/plain",
+            "description": "Input parameter user_id.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "address1",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter address1.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "address2",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter address2.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "city",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter city.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "state",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter state.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "country",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter country.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "zip",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter zip.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "user_address_result",
+            "artifact_type": "user_address_result",
+            "codec": "json",
+            "description": "Output artifact from modify_user_address.",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "cloud",
+        "batch_size": 1,
+        "side_effects": [
+          "state_update",
+          "audit_log"
+        ]
+      },
+      {
+        "node_id": "check_after_find_user_by_contact",
+        "kind": "llm",
+        "label": "Check find_user_by_contact",
+        "purpose": "Validate the previous tool output for schema, consistency, missing fields, and downstream usability.",
+        "entrypoint": "llama_server_chat",
+        "parameters": [
+          {
+            "name": "instruction",
+            "value": "Check the upstream tool output. Return compact JSON with: verdict, issues, missing_fields, consistency_notes, confidence, and recommended_next_tool_inputs. Do not invent IDs.",
+            "description": "Prompt instruction for the output checker node."
+          }
+        ],
+        "inputs": [
+          {
+            "name": "user",
+            "artifact_type": "user",
+            "codec": "json",
+            "description": "Output artifact from find_user_by_contact.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "check_after_find_user_by_contact_validation",
+            "artifact_type": "llm_output_check",
+            "description": "LLM validation of find_user_by_contact tool output.",
+            "codec": "json",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "npu",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "check_after_modify_user_address",
+        "kind": "llm",
+        "label": "Check modify_user_address",
+        "purpose": "Validate the previous tool output for schema, consistency, missing fields, and downstream usability.",
+        "entrypoint": "llama_server_chat",
+        "parameters": [
+          {
+            "name": "instruction",
+            "value": "Check the upstream tool output. Return compact JSON with: verdict, issues, missing_fields, consistency_notes, confidence, and recommended_next_tool_inputs. Do not invent IDs.",
+            "description": "Prompt instruction for the output checker node."
+          }
+        ],
+        "inputs": [
+          {
+            "name": "user_address_result",
+            "artifact_type": "user_address_result",
+            "codec": "json",
+            "description": "Output artifact from modify_user_address.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "check_after_modify_user_address_validation",
+            "artifact_type": "llm_output_check",
+            "description": "LLM validation of modify_user_address tool output.",
+            "codec": "json",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "npu",
+        "batch_size": 1,
+        "side_effects": []
+      }
+    ],
+    "edges": [
+      {
+        "from_node": "find_user_by_contact",
+        "to_node": "modify_user_address",
+        "artifact": {
+          "name": "user",
+          "artifact_type": "user",
+          "codec": "json",
+          "description": "Provides user/account context.",
+          "max_bytes": 65536
+        },
+        "reason": "Provides user/account context."
+      },
+      {
+        "from_node": "find_user_by_contact",
+        "to_node": "check_after_find_user_by_contact",
+        "artifact": {
+          "name": "user",
+          "artifact_type": "user",
+          "codec": "json",
+          "description": "Output artifact from find_user_by_contact.",
+          "max_bytes": 65536
+        },
+        "reason": "The LLM checker validates this tool output."
+      },
+      {
+        "from_node": "check_after_find_user_by_contact",
+        "to_node": "modify_user_address",
+        "artifact": {
+          "name": "check_after_find_user_by_contact_validation",
+          "artifact_type": "llm_output_check",
+          "description": "LLM validation of find_user_by_contact tool output.",
+          "codec": "json",
+          "max_bytes": 65536
+        },
+        "reason": "Downstream tool waits for LLM validation of upstream tool output."
+      },
+      {
+        "from_node": "modify_user_address",
+        "to_node": "check_after_modify_user_address",
+        "artifact": {
+          "name": "user_address_result",
+          "artifact_type": "user_address_result",
+          "codec": "json",
+          "description": "Output artifact from modify_user_address.",
+          "max_bytes": 65536
+        },
+        "reason": "The LLM checker validates this tool output."
+      }
+    ],
+    "outputs": [
+      {
+        "name": "user_address_result",
+        "artifact_type": "user_address_result",
+        "codec": "json",
+        "description": "Output artifact from modify_user_address.",
+        "max_bytes": 65536
+      }
+    ],
+    "execution_hints": {
+      "parallel_waves": [
+        {
+          "wave_index": 0,
+          "node_ids": [
+            "find_user_by_contact"
+          ],
+          "reason": "Derived after inserting LLM tool-output checker dependencies."
+        },
+        {
+          "wave_index": 1,
+          "node_ids": [
+            "check_after_find_user_by_contact"
+          ],
+          "reason": "Derived after inserting LLM tool-output checker dependencies."
+        },
+        {
+          "wave_index": 2,
+          "node_ids": [
+            "modify_user_address"
+          ],
+          "reason": "Derived after inserting LLM tool-output checker dependencies."
+        },
+        {
+          "wave_index": 3,
+          "node_ids": [
+            "check_after_modify_user_address"
+          ],
+          "reason": "Derived after inserting LLM tool-output checker dependencies."
+        }
+      ],
+      "critical_path": [
+        "find_user_by_contact",
+        "modify_user_address",
+        "check_after_modify_user_address"
+      ],
+      "offloading_rationale": "Business tools run as JSON CLI state/API tools; OCR/vision-style tools remain candidates for QNN/NPU. LLM checker nodes validate every tool output and gate dependent tool calls."
+    },
+    "validation_checks": [
+      {
+        "check_id": "all_tool_nodes_succeed",
+        "description": "Every executable tool node should return success=true.",
+        "expected_signal": "all step.success values are true"
+      }
+    ],
+    "metadata": {
+      "prompt_builder": "compact-chain",
+      "compact_workflow_id": "wf_train_120",
+      "expanded_from_workflow_id": "tau_bench_retail_modify_user_address_120",
+      "selection_index": 120,
+      "task_id": "train_120",
+      "compact_steps": [
+        {
+          "step_id": "s1",
+          "kind": "chain",
+          "chain_id": "retail_modify_user_address",
+          "depends_on": [],
+          "purpose": "Find user by contact and update their saved default shipping address"
+        }
+      ],
+      "compact_final_outputs": [
+        "user_address_result"
+      ],
+      "compact_notes": [
+        "Uses email 'yara.patel5445@example.com' and address object from ground truth; chain absorbs find_user_by_contact + modify_user_address"
+      ],
+      "cloud_original_workflow_id": "tau_bench_compact_retail_120_train_120"
+    }
+  },
+  "added_dependencies": []
+}

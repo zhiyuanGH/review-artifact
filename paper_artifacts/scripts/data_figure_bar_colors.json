@@ -1,0 +1,179 @@
+{
+  "colors": {
+    "cpu-gold": "#B8A77A",
+    "gpu-blue": "#4F8FBD",
+    "npu-purple": "#8E78B7",
+    "oracle-teal": "#2F7D7E",
+    "odabench-blue": "#006BA4",
+    "naive-gray": "#595959",
+    "max-parallel-gold": "#D6A04F",
+    "max-parallel-green": "#65A697",
+    "ablation-structure-green": "#8FB996",
+    "ablation-decider-purple": "#8E78B7",
+    "device-elite-blue": "#4F8FBD",
+    "device-gen3-green": "#8FB996",
+    "framework-llama-slate": "#4F6F8F"
+  },
+  "figures": {
+    "Fig. 6a": {
+      "caption": "Full-workflow latency",
+      "file": "figures/motivation/offloading/offloading_policy_qwen15_p3_same_u.pdf",
+      "entries": [
+        {
+          "legend": "p=3 CPU",
+          "methods": [
+            "p3_cpu"
+          ],
+          "color": "cpu-gold"
+        },
+        {
+          "legend": "p=3 GPU",
+          "methods": [
+            "p3_gpu"
+          ],
+          "color": "gpu-blue"
+        },
+        {
+          "legend": "p=3 NPU",
+          "methods": [
+            "p3_npu"
+          ],
+          "color": "npu-purple"
+        },
+        {
+          "legend": "Oracle",
+          "methods": [
+            "oracle",
+            "fig6_odabench"
+          ],
+          "color": "oracle-teal"
+        }
+      ]
+    },
+    "Fig. 10": {
+      "caption": "Overall execution latency",
+      "file": "figures/studies/execution/execution_latency.pdf",
+      "entries": [
+        {
+          "legend": "Sequential",
+          "methods": [
+            "naive"
+          ],
+          "color": "naive-gray"
+        },
+        {
+          "legend": "ODABench",
+          "methods": [
+            "odabench"
+          ],
+          "color": "odabench-blue"
+        },
+        {
+          "legend": "Max-parallel + RR",
+          "methods": [
+            "max_rr"
+          ],
+          "color": "max-parallel-gold"
+        },
+        {
+          "legend": "HeRo",
+          "methods": [
+            "max_wave"
+          ],
+          "color": "max-parallel-green"
+        }
+      ]
+    },
+    "Fig. 11": {
+      "caption": "Parallel-structure search ablation",
+      "file": "figures/studies/execution/execution_structure_ablation.pdf",
+      "entries": [
+        {
+          "legend": "ODABench",
+          "methods": [
+            "odabench"
+          ],
+          "color": "odabench-blue"
+        },
+        {
+          "legend": "blind p=3",
+          "methods": [
+            "blind_p3"
+          ],
+          "color": "ablation-structure-green"
+        }
+      ]
+    },
+    "Fig. 12": {
+      "caption": "Placement-oracle ablation",
+      "file": "figures/studies/execution/execution_decider_ablation.pdf",
+      "entries": [
+        {
+          "legend": "Oracle",
+          "methods": [
+            "oracle"
+          ],
+          "color": "oracle-teal"
+        },
+        {
+          "legend": "w/o decider",
+          "methods": [
+            "wo_decider"
+          ],
+          "color": "ablation-decider-purple"
+        }
+      ]
+    },
+    "Fig. 14": {
+      "caption": "Hardware characterization across workflows",
+      "file": "figures/studies/characterization/characterization_hardware_by_workflow.pdf",
+      "entries": [
+        {
+          "legend": "8 Elite",
+          "methods": [
+            "elite",
+            "8_elite"
+          ],
+          "color": "device-elite-blue"
+        },
+        {
+          "legend": "8 Gen3",
+          "methods": [
+            "gen3",
+            "8_gen3"
+          ],
+          "color": "device-gen3-green"
+        }
+      ]
+    },
+    "Fig. 15": {
+      "caption": "Framework characterization on Phi-3.5-mini",
+      "file": "figures/studies/characterization/characterization_framework_by_workflow.pdf",
+      "entries": [
+        {
+          "legend": "Genie NPU",
+          "methods": [
+            "genie_npu_phi35"
+          ],
+          "color": "npu-purple"
+        },
+        {
+          "legend": "ORT GenAI CPU",
+          "methods": [
+            "ort_genai_cpu_phi35"
+          ],
+          "color": "cpu-gold"
+        },
+        {
+          "legend": "llama.cpp selected",
+          "methods": [
+            "llama_cpp"
+          ],
+          "color": "framework-llama-slate"
+        }
+      ]
+    }
+  },
+  "edge": "#4F4F4F",
+  "edge_width": 0.35
+}

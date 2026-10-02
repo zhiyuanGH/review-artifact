@@ -1,0 +1,673 @@
+{
+  "source_dataset": "fuvty/tau-bench-synthetic",
+  "config": "tasks",
+  "split": "train",
+  "selection": {
+    "method": "curated_diverse_scenarios",
+    "count": 10,
+    "indices": [
+      0,
+      20,
+      48,
+      61,
+      100,
+      120,
+      160,
+      180,
+      200,
+      220
+    ],
+    "criteria": [
+      "cover both retail and airline domains",
+      "cover distinct ground-truth action sequences",
+      "avoid empty-action prompt rows so workflows can execute",
+      "include single-action and multi-action/compound user goals"
+    ]
+  },
+  "samples": [
+    {
+      "selection_index": 0,
+      "task_id": "train_0",
+      "domain": "retail",
+      "description": {
+        "purpose": "Generated from template: cancel_pending",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are apologetic and slightly embarrassed about the mistake. You speak in a straightforward manner and just want to get the cancellation handled without making a big deal of it.",
+          "domain": "retail",
+          "reason_for_call": "I need to cancel my order #W4466964. I ordered it by mistake - I wasn't supposed to place that order at all. It has an Espresso Machine and a Gaming Mouse on it.",
+          "known_info": "You are Juan Lopez with email juan.lopez7539@example.com. Your order #W4466964 contains a 19 bar, 2L, capsule Espresso Machine and a black, optical, wired Gaming Mouse.",
+          "unknown_info": "You are not sure whether the order has already been processed or shipped."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "find_user_by_contact",
+          "arguments": {
+            "email": "juan.lopez7539@example.com"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "#W4466964"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "cancel_order",
+          "arguments": {
+            "order_id": "#W4466964",
+            "reason": "ordered by mistake"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": true,
+      "selection_reason": "retail cancel pending order",
+      "diversity_tags": [
+        "retail",
+        "retail cancel pending order"
+      ]
+    },
+    {
+      "selection_index": 20,
+      "task_id": "train_20",
+      "domain": "retail",
+      "description": {
+        "purpose": "Generated from template: return_delivered",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are friendly but direct, and you want to get this return handled quickly without unnecessary back-and-forth.",
+          "domain": "retail",
+          "reason_for_call": "I received my order #W9183908 and I need to return the espresso machine - it's the 9 bar, 1L manual one. I'd like the refund to go back to my original gift card that I used for the purchase.",
+          "known_info": "You are Fatima Anderson with email fatima.anderson1082@example.com. You know your order number is #W9183908 and you want to return the 9 bar, 1L, manual Espresso Machine.",
+          "unknown_info": "You do not know your customer ID or any internal account numbers."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "find_user_by_contact",
+          "arguments": {
+            "email": "fatima.anderson1082@example.com"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "#W9183908"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "return_delivered_order_items",
+          "arguments": {
+            "order_id": "#W9183908",
+            "item_ids": [
+              "7407838442"
+            ],
+            "payment_method_id": "gift_card_8070316"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": true,
+      "selection_reason": "retail return delivered item with refund method",
+      "diversity_tags": [
+        "retail",
+        "retail return delivered item with refund method"
+      ]
+    },
+    {
+      "selection_index": 48,
+      "task_id": "train_48",
+      "domain": "retail",
+      "description": {
+        "purpose": "Generated from template: exchange_delivered",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are friendly and patient, willing to provide any information the agent needs to help complete your exchange.",
+          "domain": "retail",
+          "reason_for_call": "I received my order #W3895186 and I need to exchange two items. The black leather AMOLED Smart Watch needs to be exchanged for another one with the same leather band and AMOLED display. The black Electric Toothbrush that runs on AA batteries needs to be exchanged for a blue one instead.",
+          "known_info": "You are Olivia Jackson. Your email is olivia.jackson2465@example.com. You received order #W3895186 containing a black leather AMOLED Smart Watch and a black high AA batteries Electric Toothbrush.",
+          "unknown_info": "You don't know if there will be any price difference for the exchanges or what the return process involves."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "find_user_by_contact",
+          "arguments": {
+            "email": "olivia.jackson2465@example.com"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "#W3895186"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "get_product_details",
+          "arguments": {
+            "product_id": "6945232052"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_3",
+          "name": "get_product_details",
+          "arguments": {
+            "product_id": "7352963235"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_4",
+          "name": "exchange_delivered_order_items",
+          "arguments": {
+            "order_id": "#W3895186",
+            "item_ids": [
+              "8798690242",
+              "9320099340"
+            ],
+            "new_item_ids": [
+              "1583904702",
+              "5694328282"
+            ],
+            "payment_method_id": "paypal_3999493"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": false,
+      "selection_reason": "retail exchange two delivered items",
+      "diversity_tags": [
+        "retail",
+        "retail exchange two delivered items"
+      ]
+    },
+    {
+      "selection_index": 61,
+      "task_id": "train_61",
+      "domain": "retail",
+      "description": {
+        "purpose": "Generated from template: modify_pending_items",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are budget-conscious and direct. You know exactly what you want and prefer quick, efficient service. You're willing to answer verification questions but get slightly impatient if things drag on unnecessarily.",
+          "domain": "retail",
+          "reason_for_call": "My order #W8797321 is still showing as pending and I want to change two items before it ships. I want to swap out the 2K Ethernet Indoor Security Camera with 130 degree view, and also the 15-inch space grey Laptop with i5 processor, 16GB RAM and 512GB SSD. For both items, I want to switch to whatever the cheapest available options are. If there's any price difference, charge it to my PayPal.",
+          "known_info": "You are Omar Johnson with email omar.johnson6791@example.com. You know your order number is #W8797321 and it's still pending. You remember ordering a security camera and a laptop with specific features. You want the cheapest available alternatives for both items and prefer to use PayPal for any additional charges.",
+          "unknown_info": "You don't know exactly which products are the cheapest alternatives - you're relying on the agent to find and offer those options."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "find_user_by_contact",
+          "arguments": {
+            "email": "omar.johnson6791@example.com"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "#W8797321"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "get_product_details",
+          "arguments": {
+            "product_id": "2985987096"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_3",
+          "name": "get_product_details",
+          "arguments": {
+            "product_id": "4760268021"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_4",
+          "name": "modify_pending_order_items",
+          "arguments": {
+            "order_id": "#W8797321",
+            "item_ids": [
+              "3478699712",
+              "8470360507"
+            ],
+            "new_item_ids": [
+              "6017636844",
+              "6901578702"
+            ],
+            "payment_method_id": "paypal_6053880"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": false,
+      "selection_reason": "retail modify multiple pending order items",
+      "diversity_tags": [
+        "retail",
+        "retail modify multiple pending order items"
+      ]
+    },
+    {
+      "selection_index": 100,
+      "task_id": "train_100",
+      "domain": "retail",
+      "description": {
+        "purpose": "Generated from template: modify_pending_payment",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are friendly and cooperative. You answer questions clearly and are patient with verification steps.",
+          "domain": "retail",
+          "reason_for_call": "I placed an order recently and I'd like to switch the payment method to my PayPal account before it ships.",
+          "known_info": "You are Evelyn Ito with email evelyn.ito2168@example.com. Your order number is #W6207110 and you know it's still pending.",
+          "unknown_info": "You don't know the current payment method on file or any internal policy details about payment changes."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "find_user_by_contact",
+          "arguments": {
+            "email": "evelyn.ito2168@example.com"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "#W6207110"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "modify_pending_order_payment",
+          "arguments": {
+            "order_id": "#W6207110",
+            "payment_method_id": "paypal_5377635"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": false,
+      "selection_reason": "retail change pending order payment method",
+      "diversity_tags": [
+        "retail",
+        "retail change pending order payment method"
+      ]
+    },
+    {
+      "selection_index": 120,
+      "task_id": "train_120",
+      "domain": "retail",
+      "description": {
+        "purpose": "Generated from template: modify_user_address",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are friendly and conversational. You like to explain the context behind your request and appreciate when the agent confirms details back to you.",
+          "domain": "retail",
+          "reason_for_call": "I just moved to a new place and I need to update my default shipping address so future orders don't get sent to my old apartment.",
+          "known_info": "You are Yara Patel with email yara.patel5445@example.com. Your new address is 258 Willow Lane, Suite 550, Fort Worth, TX 76130.",
+          "unknown_info": "You do not remember your old address on file or your account number."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "find_user_by_contact",
+          "arguments": {
+            "email": "yara.patel5445@example.com"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "modify_user_address",
+          "arguments": {
+            "user_id": "yara_patel_8545",
+            "address1": "258 Willow Lane",
+            "address2": "Suite 550",
+            "city": "Fort Worth",
+            "state": "TX",
+            "country": "USA",
+            "zip": "76130"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": false,
+      "selection_reason": "retail update default account shipping address",
+      "diversity_tags": [
+        "retail",
+        "retail update default account shipping address"
+      ]
+    },
+    {
+      "selection_index": 160,
+      "task_id": "train_160",
+      "domain": "retail",
+      "description": {
+        "purpose": "Generated from template: address_fix_and_modify_items",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are organized and clear when communicating, wanting to resolve both issues efficiently in one call. You appreciate when agents confirm details back to you.",
+          "domain": "retail",
+          "reason_for_call": "I have a pending order #W4183735 and I need help with two things. First, the shipping address is wrong and needs to be corrected. Second, I want to change the water bottle in my order - it's a 500ml stainless steel one, and I need it in green color.",
+          "known_info": "You are Sophia Nguyen, email sophia.nguyen3545@example.com. Your correct shipping address is 421 Elm Street, Suite 870, Chicago, IL 60647. You have PayPal available for any payment adjustments.",
+          "unknown_info": "You are not sure if the order can still be modified since it's pending, or what options are available for the water bottle."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "find_user_by_contact",
+          "arguments": {
+            "email": "sophia.nguyen3545@example.com"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "#W4183735"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "modify_pending_order_address",
+          "arguments": {
+            "order_id": "#W4183735",
+            "address1": "421 Elm Street",
+            "address2": "Suite 870",
+            "city": "Chicago",
+            "state": "IL",
+            "country": "USA",
+            "zip": "60647"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_3",
+          "name": "get_product_details",
+          "arguments": {
+            "product_id": "8310926033"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_4",
+          "name": "modify_pending_order_items",
+          "arguments": {
+            "order_id": "#W4183735",
+            "item_ids": [
+              "7533802601"
+            ],
+            "new_item_ids": [
+              "5758737025"
+            ],
+            "payment_method_id": "paypal_5763294"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": false,
+      "selection_reason": "retail compound order edit: address correction plus item replacement",
+      "diversity_tags": [
+        "retail",
+        "retail compound order edit: address correction plus item replacement"
+      ]
+    },
+    {
+      "selection_index": 180,
+      "task_id": "train_0",
+      "domain": "airline",
+      "description": {
+        "purpose": "Generated from template: cancel_reservation",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are direct and business-like. You just want to get this done efficiently without unnecessary chitchat.",
+          "domain": "airline",
+          "reason_for_call": "I need to cancel my reservation. My plans have changed and I won't be able to take this flight anymore.",
+          "known_info": "You are Daiki Patel. Your reservation number is 8RI5AI, a flight from MIA to MIA in economy class.",
+          "unknown_info": "You don't know the specific cancellation policy or whether you'll receive a refund."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "get_user_details",
+          "arguments": {
+            "user_id": "daiki_patel_1917"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "8RI5AI"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "cancel_order",
+          "arguments": {
+            "order_id": "8RI5AI"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": false,
+      "selection_reason": "airline cancel reservation",
+      "diversity_tags": [
+        "airline",
+        "airline cancel reservation"
+      ]
+    },
+    {
+      "selection_index": 200,
+      "task_id": "train_20",
+      "domain": "airline",
+      "description": {
+        "purpose": "Generated from template: modify_flights",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are friendly but in a bit of a hurry. You want to get this done quickly without a lot of back and forth, but you're clear about what you want.",
+          "domain": "airline",
+          "reason_for_call": "I need to change my flight from Seattle to JFK on my reservation ZO9C7T. I'd like the cheapest available option for that route. If there's any price difference, I have a gift card on my account I'd like to use to cover it.",
+          "known_info": "You are Ava Smith with email ava.smith2792@example.com. Your reservation code is ZO9C7T. You know you have a gift card associated with your account.",
+          "unknown_info": "You don't know what flight options are available or their exact prices."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "get_user_details",
+          "arguments": {
+            "user_id": "ava_smith_9007"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "ZO9C7T"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "update_reservation_flights",
+          "arguments": {
+            "reservation_id": "ZO9C7T",
+            "cabin": "business",
+            "flights": [
+              {
+                "flight_number": "HAT021",
+                "date": "2024-05-21"
+              }
+            ],
+            "payment_id": "gift_card_7397399"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": false,
+      "selection_reason": "airline change flight with cheapest-option/payment constraint",
+      "diversity_tags": [
+        "airline",
+        "airline change flight with cheapest-option/payment constraint"
+      ]
+    },
+    {
+      "selection_index": 220,
+      "task_id": "train_40",
+      "domain": "airline",
+      "description": {
+        "purpose": "Generated from template: add_baggage",
+        "relevant_policies": null,
+        "notes": null
+      },
+      "user_scenario": {
+        "persona": null,
+        "instructions": {
+          "task_instructions": "You are friendly and patient, willing to provide information clearly but you don't like to repeat yourself.",
+          "domain": "airline",
+          "reason_for_call": "I need to add two more checked bags to my upcoming flight reservation. I'm traveling soon and realized I'll need extra baggage allowance.",
+          "known_info": "You are Chen Nguyen. Your reservation number is JU7PH1. You have a gift card on your account that you'd like to use if there are any fees.",
+          "unknown_info": "You don't know the current baggage fees or how many bags are already included with your ticket."
+        }
+      },
+      "initial_state": null,
+      "ground_truth_actions": [
+        {
+          "action_id": "0_0",
+          "name": "get_user_details",
+          "arguments": {
+            "user_id": "chen_nguyen_6691"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_1",
+          "name": "get_order_details",
+          "arguments": {
+            "order_id": "JU7PH1"
+          },
+          "info": null
+        },
+        {
+          "action_id": "0_2",
+          "name": "update_reservation_baggages",
+          "arguments": {
+            "reservation_id": "JU7PH1",
+            "total_baggages": 2,
+            "nonfree_baggages": 0,
+            "payment_id": "gift_card_8462123"
+          },
+          "info": null
+        }
+      ],
+      "ground_truth_communicate_info": [],
+      "ground_truth_nl_assertions": [],
+      "validated": false,
+      "selection_reason": "airline update baggage allowance",
+      "diversity_tags": [
+        "airline",
+        "airline update baggage allowance"
+      ]
+    }
+  ]
+}

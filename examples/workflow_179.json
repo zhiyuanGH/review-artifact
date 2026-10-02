@@ -1,0 +1,905 @@
+{
+  "workflow": {
+    "workflow_id": "tau_bench_cloud_retail_179_train_179",
+    "name": "Modify pending order address and items using gift card",
+    "description": "Update shipping address and swap earbud color for pending order #W8073958, using gift card for any price difference",
+    "source_task_ids": [
+      "train_179"
+    ],
+    "user_goal": "Update shipping address and swap earbud color for pending order #W8073958, using gift card for any price difference",
+    "inputs": [
+      {
+        "name": "first_name",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter first_name.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "last_name",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter last_name.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "zip",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter zip.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "order_id",
+        "artifact_type": "id",
+        "codec": "text/plain",
+        "description": "Input parameter order_id.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "address1",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter address1.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "address2",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter address2.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "city",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter city.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "state",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter state.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "country",
+        "artifact_type": "value",
+        "codec": "text/plain",
+        "description": "Input parameter country.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "product_id",
+        "artifact_type": "id",
+        "codec": "text/plain",
+        "description": "Input parameter product_id.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "item_ids",
+        "artifact_type": "id",
+        "codec": "json",
+        "description": "Input parameter item_ids.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "new_item_ids",
+        "artifact_type": "id",
+        "codec": "json",
+        "description": "Input parameter new_item_ids.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "payment_method_id",
+        "artifact_type": "id",
+        "codec": "text/plain",
+        "description": "Input parameter payment_method_id.",
+        "max_bytes": 65536
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": "find_user_by_name",
+        "kind": "app",
+        "label": "Find User By Name",
+        "purpose": "find user by name",
+        "entrypoint": "find_user_by_name",
+        "parameters": [
+          {
+            "name": "first_name",
+            "value": "Harper",
+            "description": "find_user_by_name argument first_name"
+          },
+          {
+            "name": "last_name",
+            "value": "Khan",
+            "description": "find_user_by_name argument last_name"
+          },
+          {
+            "name": "zip",
+            "value": "19029",
+            "description": "find_user_by_name argument zip"
+          }
+        ],
+        "inputs": [
+          {
+            "name": "first_name",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter first_name.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "last_name",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter last_name.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "zip",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter zip.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "user",
+            "artifact_type": "user",
+            "codec": "json",
+            "description": "Output artifact from find_user_by_name.",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "cloud",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "get_order_details",
+        "kind": "app",
+        "label": "Get Order Details",
+        "purpose": "get order details",
+        "entrypoint": "get_order_details",
+        "parameters": [
+          {
+            "name": "order_id",
+            "value": "#W8073958",
+            "description": "get_order_details argument order_id"
+          }
+        ],
+        "inputs": [
+          {
+            "name": "order_id",
+            "artifact_type": "id",
+            "codec": "text/plain",
+            "description": "Input parameter order_id.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "order",
+            "artifact_type": "order",
+            "codec": "json",
+            "description": "Output artifact from get_order_details.",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "cloud",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "modify_pending_order_address",
+        "kind": "app",
+        "label": "Modify Pending Order Address",
+        "purpose": "modify pending order address",
+        "entrypoint": "modify_pending_order_address",
+        "parameters": [
+          {
+            "name": "order_id",
+            "value": "#W8073958",
+            "description": "modify_pending_order_address argument order_id"
+          },
+          {
+            "name": "address1",
+            "value": "905 Oak Street",
+            "description": "modify_pending_order_address argument address1"
+          },
+          {
+            "name": "address2",
+            "value": "Suite 419",
+            "description": "modify_pending_order_address argument address2"
+          },
+          {
+            "name": "city",
+            "value": "San Diego",
+            "description": "modify_pending_order_address argument city"
+          },
+          {
+            "name": "state",
+            "value": "CA",
+            "description": "modify_pending_order_address argument state"
+          },
+          {
+            "name": "country",
+            "value": "USA",
+            "description": "modify_pending_order_address argument country"
+          },
+          {
+            "name": "zip",
+            "value": "92192",
+            "description": "modify_pending_order_address argument zip"
+          }
+        ],
+        "inputs": [
+          {
+            "name": "order_id",
+            "artifact_type": "id",
+            "codec": "text/plain",
+            "description": "Input parameter order_id.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "address1",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter address1.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "address2",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter address2.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "city",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter city.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "state",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter state.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "country",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter country.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "zip",
+            "artifact_type": "value",
+            "codec": "text/plain",
+            "description": "Input parameter zip.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "address_modification_result",
+            "artifact_type": "address_modification_result",
+            "codec": "json",
+            "description": "Output artifact from modify_pending_order_address.",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "cloud",
+        "batch_size": 1,
+        "side_effects": [
+          "state_update",
+          "audit_log"
+        ]
+      },
+      {
+        "node_id": "get_product_details",
+        "kind": "app",
+        "label": "Get Product Details",
+        "purpose": "get product details",
+        "entrypoint": "get_product_details",
+        "parameters": [
+          {
+            "name": "product_id",
+            "value": "9924732112",
+            "description": "get_product_details argument product_id"
+          }
+        ],
+        "inputs": [
+          {
+            "name": "product_id",
+            "artifact_type": "id",
+            "codec": "text/plain",
+            "description": "Input parameter product_id.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "product",
+            "artifact_type": "product",
+            "codec": "json",
+            "description": "Output artifact from get_product_details.",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "cloud",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "modify_pending_order_items",
+        "kind": "app",
+        "label": "Modify Pending Order Items",
+        "purpose": "modify pending order items",
+        "entrypoint": "modify_pending_order_items",
+        "parameters": [
+          {
+            "name": "order_id",
+            "value": "#W8073958",
+            "description": "modify_pending_order_items argument order_id"
+          },
+          {
+            "name": "item_ids",
+            "value": "[\"6077640618\"]",
+            "description": "modify_pending_order_items argument item_ids"
+          },
+          {
+            "name": "new_item_ids",
+            "value": "[\"2052249669\"]",
+            "description": "modify_pending_order_items argument new_item_ids"
+          },
+          {
+            "name": "payment_method_id",
+            "value": "gift_card_6445682",
+            "description": "modify_pending_order_items argument payment_method_id"
+          }
+        ],
+        "inputs": [
+          {
+            "name": "order_id",
+            "artifact_type": "id",
+            "codec": "text/plain",
+            "description": "Input parameter order_id.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "item_ids",
+            "artifact_type": "id",
+            "codec": "json",
+            "description": "Input parameter item_ids.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "new_item_ids",
+            "artifact_type": "id",
+            "codec": "json",
+            "description": "Input parameter new_item_ids.",
+            "max_bytes": 65536
+          },
+          {
+            "name": "payment_method_id",
+            "artifact_type": "id",
+            "codec": "text/plain",
+            "description": "Input parameter payment_method_id.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "order_modification_result",
+            "artifact_type": "order_modification_result",
+            "codec": "json",
+            "description": "Output artifact from modify_pending_order_items.",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "cloud",
+        "batch_size": 1,
+        "side_effects": [
+          "state_update",
+          "audit_log"
+        ]
+      },
+      {
+        "node_id": "check_after_find_user_by_name",
+        "kind": "llm",
+        "label": "Check find_user_by_name",
+        "purpose": "Validate the previous tool output for schema, consistency, missing fields, and downstream usability.",
+        "entrypoint": "llama_server_chat",
+        "parameters": [
+          {
+            "name": "instruction",
+            "value": "Check the upstream tool output. Return compact JSON with: verdict, issues, missing_fields, consistency_notes, confidence, and recommended_next_tool_inputs. Do not invent IDs.",
+            "description": "Prompt instruction for the output checker node."
+          }
+        ],
+        "inputs": [
+          {
+            "name": "user",
+            "artifact_type": "user",
+            "codec": "json",
+            "description": "Output artifact from find_user_by_name.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "check_after_find_user_by_name_validation",
+            "artifact_type": "llm_output_check",
+            "description": "LLM validation of find_user_by_name tool output.",
+            "codec": "json",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "npu",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "check_after_get_order_details",
+        "kind": "llm",
+        "label": "Check get_order_details",
+        "purpose": "Validate the previous tool output for schema, consistency, missing fields, and downstream usability.",
+        "entrypoint": "llama_server_chat",
+        "parameters": [
+          {
+            "name": "instruction",
+            "value": "Check the upstream tool output. Return compact JSON with: verdict, issues, missing_fields, consistency_notes, confidence, and recommended_next_tool_inputs. Do not invent IDs.",
+            "description": "Prompt instruction for the output checker node."
+          }
+        ],
+        "inputs": [
+          {
+            "name": "order",
+            "artifact_type": "order",
+            "codec": "json",
+            "description": "Output artifact from get_order_details.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "check_after_get_order_details_validation",
+            "artifact_type": "llm_output_check",
+            "description": "LLM validation of get_order_details tool output.",
+            "codec": "json",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "npu",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "check_after_modify_pending_order_address",
+        "kind": "llm",
+        "label": "Check modify_pending_order_address",
+        "purpose": "Validate the previous tool output for schema, consistency, missing fields, and downstream usability.",
+        "entrypoint": "llama_server_chat",
+        "parameters": [
+          {
+            "name": "instruction",
+            "value": "Check the upstream tool output. Return compact JSON with: verdict, issues, missing_fields, consistency_notes, confidence, and recommended_next_tool_inputs. Do not invent IDs.",
+            "description": "Prompt instruction for the output checker node."
+          }
+        ],
+        "inputs": [
+          {
+            "name": "address_modification_result",
+            "artifact_type": "address_modification_result",
+            "codec": "json",
+            "description": "Output artifact from modify_pending_order_address.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "check_after_modify_pending_order_address_validation",
+            "artifact_type": "llm_output_check",
+            "description": "LLM validation of modify_pending_order_address tool output.",
+            "codec": "json",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "npu",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "check_after_get_product_details",
+        "kind": "llm",
+        "label": "Check get_product_details",
+        "purpose": "Validate the previous tool output for schema, consistency, missing fields, and downstream usability.",
+        "entrypoint": "llama_server_chat",
+        "parameters": [
+          {
+            "name": "instruction",
+            "value": "Check the upstream tool output. Return compact JSON with: verdict, issues, missing_fields, consistency_notes, confidence, and recommended_next_tool_inputs. Do not invent IDs.",
+            "description": "Prompt instruction for the output checker node."
+          }
+        ],
+        "inputs": [
+          {
+            "name": "product",
+            "artifact_type": "product",
+            "codec": "json",
+            "description": "Output artifact from get_product_details.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "check_after_get_product_details_validation",
+            "artifact_type": "llm_output_check",
+            "description": "LLM validation of get_product_details tool output.",
+            "codec": "json",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "npu",
+        "batch_size": 1,
+        "side_effects": []
+      },
+      {
+        "node_id": "check_after_modify_pending_order_items",
+        "kind": "llm",
+        "label": "Check modify_pending_order_items",
+        "purpose": "Validate the previous tool output for schema, consistency, missing fields, and downstream usability.",
+        "entrypoint": "llama_server_chat",
+        "parameters": [
+          {
+            "name": "instruction",
+            "value": "Check the upstream tool output. Return compact JSON with: verdict, issues, missing_fields, consistency_notes, confidence, and recommended_next_tool_inputs. Do not invent IDs.",
+            "description": "Prompt instruction for the output checker node."
+          }
+        ],
+        "inputs": [
+          {
+            "name": "order_modification_result",
+            "artifact_type": "order_modification_result",
+            "codec": "json",
+            "description": "Output artifact from modify_pending_order_items.",
+            "max_bytes": 65536
+          }
+        ],
+        "outputs": [
+          {
+            "name": "check_after_modify_pending_order_items_validation",
+            "artifact_type": "llm_output_check",
+            "description": "LLM validation of modify_pending_order_items tool output.",
+            "codec": "json",
+            "max_bytes": 65536
+          }
+        ],
+        "preferred_backend": "npu",
+        "batch_size": 1,
+        "side_effects": []
+      }
+    ],
+    "edges": [
+      {
+        "from_node": "find_user_by_name",
+        "to_node": "modify_pending_order_address",
+        "artifact": {
+          "name": "user",
+          "artifact_type": "user",
+          "codec": "json",
+          "description": "Provides user/account context.",
+          "max_bytes": 65536
+        },
+        "reason": "Provides user/account context."
+      },
+      {
+        "from_node": "get_order_details",
+        "to_node": "modify_pending_order_address",
+        "artifact": {
+          "name": "order",
+          "artifact_type": "order",
+          "codec": "json",
+          "description": "Provides current order/reservation state.",
+          "max_bytes": 65536
+        },
+        "reason": "Provides current order/reservation state."
+      },
+      {
+        "from_node": "find_user_by_name",
+        "to_node": "modify_pending_order_items",
+        "artifact": {
+          "name": "user",
+          "artifact_type": "user",
+          "codec": "json",
+          "description": "Provides user/account context.",
+          "max_bytes": 65536
+        },
+        "reason": "Provides user/account context."
+      },
+      {
+        "from_node": "get_order_details",
+        "to_node": "modify_pending_order_items",
+        "artifact": {
+          "name": "order",
+          "artifact_type": "order",
+          "codec": "json",
+          "description": "Provides current order/reservation state.",
+          "max_bytes": 65536
+        },
+        "reason": "Provides current order/reservation state."
+      },
+      {
+        "from_node": "find_user_by_name",
+        "to_node": "check_after_find_user_by_name",
+        "artifact": {
+          "name": "user",
+          "artifact_type": "user",
+          "codec": "json",
+          "description": "Output artifact from find_user_by_name.",
+          "max_bytes": 65536
+        },
+        "reason": "The LLM checker validates this tool output."
+      },
+      {
+        "from_node": "check_after_find_user_by_name",
+        "to_node": "modify_pending_order_address",
+        "artifact": {
+          "name": "check_after_find_user_by_name_validation",
+          "artifact_type": "llm_output_check",
+          "description": "LLM validation of find_user_by_name tool output.",
+          "codec": "json",
+          "max_bytes": 65536
+        },
+        "reason": "Downstream tool waits for LLM validation of upstream tool output."
+      },
+      {
+        "from_node": "check_after_find_user_by_name",
+        "to_node": "modify_pending_order_items",
+        "artifact": {
+          "name": "check_after_find_user_by_name_validation",
+          "artifact_type": "llm_output_check",
+          "description": "LLM validation of find_user_by_name tool output.",
+          "codec": "json",
+          "max_bytes": 65536
+        },
+        "reason": "Downstream tool waits for LLM validation of upstream tool output."
+      },
+      {
+        "from_node": "get_order_details",
+        "to_node": "check_after_get_order_details",
+        "artifact": {
+          "name": "order",
+          "artifact_type": "order",
+          "codec": "json",
+          "description": "Output artifact from get_order_details.",
+          "max_bytes": 65536
+        },
+        "reason": "The LLM checker validates this tool output."
+      },
+      {
+        "from_node": "check_after_get_order_details",
+        "to_node": "modify_pending_order_address",
+        "artifact": {
+          "name": "check_after_get_order_details_validation",
+          "artifact_type": "llm_output_check",
+          "description": "LLM validation of get_order_details tool output.",
+          "codec": "json",
+          "max_bytes": 65536
+        },
+        "reason": "Downstream tool waits for LLM validation of upstream tool output."
+      },
+      {
+        "from_node": "check_after_get_order_details",
+        "to_node": "modify_pending_order_items",
+        "artifact": {
+          "name": "check_after_get_order_details_validation",
+          "artifact_type": "llm_output_check",
+          "description": "LLM validation of get_order_details tool output.",
+          "codec": "json",
+          "max_bytes": 65536
+        },
+        "reason": "Downstream tool waits for LLM validation of upstream tool output."
+      },
+      {
+        "from_node": "modify_pending_order_address",
+        "to_node": "check_after_modify_pending_order_address",
+        "artifact": {
+          "name": "address_modification_result",
+          "artifact_type": "address_modification_result",
+          "codec": "json",
+          "description": "Output artifact from modify_pending_order_address.",
+          "max_bytes": 65536
+        },
+        "reason": "The LLM checker validates this tool output."
+      },
+      {
+        "from_node": "get_product_details",
+        "to_node": "check_after_get_product_details",
+        "artifact": {
+          "name": "product",
+          "artifact_type": "product",
+          "codec": "json",
+          "description": "Output artifact from get_product_details.",
+          "max_bytes": 65536
+        },
+        "reason": "The LLM checker validates this tool output."
+      },
+      {
+        "from_node": "modify_pending_order_items",
+        "to_node": "check_after_modify_pending_order_items",
+        "artifact": {
+          "name": "order_modification_result",
+          "artifact_type": "order_modification_result",
+          "codec": "json",
+          "description": "Output artifact from modify_pending_order_items.",
+          "max_bytes": 65536
+        },
+        "reason": "The LLM checker validates this tool output."
+      },
+      {
+        "from_node": "check_after_modify_pending_order_address",
+        "to_node": "modify_pending_order_items",
+        "reason": "Preserve original action order for shared mutable record",
+        "state_resource": [
+          "order",
+          "#W8073958"
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "address_modification_result",
+        "artifact_type": "address_modification_result",
+        "codec": "json",
+        "description": "Output artifact from modify_pending_order_address.",
+        "max_bytes": 65536
+      },
+      {
+        "name": "order_modification_result",
+        "artifact_type": "order_modification_result",
+        "codec": "json",
+        "description": "Output artifact from modify_pending_order_items.",
+        "max_bytes": 65536
+      }
+    ],
+    "execution_hints": {
+      "parallel_waves": [
+        {
+          "wave_index": 0,
+          "node_ids": [
+            "find_user_by_name",
+            "get_order_details",
+            "get_product_details"
+          ],
+          "reason": "Derived by Kahn topological layering."
+        },
+        {
+          "wave_index": 1,
+          "node_ids": [
+            "check_after_find_user_by_name",
+            "check_after_get_order_details",
+            "check_after_get_product_details"
+          ],
+          "reason": "Derived by Kahn topological layering."
+        },
+        {
+          "wave_index": 2,
+          "node_ids": [
+            "modify_pending_order_address"
+          ],
+          "reason": "Derived by Kahn topological layering."
+        },
+        {
+          "wave_index": 3,
+          "node_ids": [
+            "check_after_modify_pending_order_address"
+          ],
+          "reason": "Derived by Kahn topological layering."
+        },
+        {
+          "wave_index": 4,
+          "node_ids": [
+            "modify_pending_order_items"
+          ],
+          "reason": "Derived by Kahn topological layering."
+        },
+        {
+          "wave_index": 5,
+          "node_ids": [
+            "check_after_modify_pending_order_items"
+          ],
+          "reason": "Derived by Kahn topological layering."
+        }
+      ],
+      "critical_path": [
+        "find_user_by_name",
+        "modify_pending_order_items",
+        "check_after_modify_pending_order_items"
+      ],
+      "offloading_rationale": "Business tools run as JSON CLI state/API tools; OCR/vision-style tools remain candidates for QNN/NPU. LLM checker nodes validate every tool output and gate dependent tool calls."
+    },
+    "validation_checks": [
+      {
+        "check_id": "all_tool_nodes_succeed",
+        "description": "Every executable tool node should return success=true.",
+        "expected_signal": "all step.success values are true"
+      }
+    ],
+    "metadata": {
+      "prompt_builder": "compact-chain",
+      "compact_workflow_id": "train_179_wf",
+      "expanded_from_workflow_id": "tau_bench_retail_address_fix_and_modify_items_179",
+      "selection_index": 179,
+      "task_id": "train_179",
+      "compact_steps": [
+        {
+          "step_id": "s1",
+          "kind": "chain",
+          "chain_id": "retail_order_context",
+          "depends_on": [],
+          "purpose": "Find user Harper Khan (zip 19029) and retrieve order #W8073958"
+        },
+        {
+          "step_id": "s2",
+          "kind": "chain",
+          "chain_id": "retail_modify_order_address",
+          "depends_on": [
+            "s1"
+          ],
+          "purpose": "Update shipping address to 905 Oak Street, Suite 419, San Diego, CA 92192"
+        },
+        {
+          "step_id": "s3",
+          "kind": "chain",
+          "chain_id": "retail_modify_items",
+          "depends_on": [
+            "s1"
+          ],
+          "purpose": "Replace item 6077640618 (blue earbuds) with 2052249669 (white earbuds) using gift_card_6445682"
+        }
+      ],
+      "compact_final_outputs": [
+        "address_modification_result",
+        "order_modification_result"
+      ],
+      "compact_notes": [
+        "Both modifications apply to the same pending order; no cancellation or return needed.",
+        "Gift card ID is provided and used in modify_pending_order_items step via retail_modify_items chain."
+      ],
+      "cloud_original_workflow_id": "tau_bench_compact_retail_179_train_179",
+      "phone_state_conflict_dependencies": [
+        {
+          "from_node": "check_after_modify_pending_order_address",
+          "to_node": "modify_pending_order_items",
+          "reason": "Preserve original action order for shared mutable record",
+          "state_resource": [
+            "order",
+            "#W8073958"
+          ]
+        }
+      ]
+    }
+  },
+  "added_dependencies": [
+    {
+      "from_node": "check_after_modify_pending_order_address",
+      "to_node": "modify_pending_order_items",
+      "reason": "Preserve original action order for shared mutable record",
+      "state_resource": [
+        "order",
+        "#W8073958"
+      ]
+    }
+  ]
+}
